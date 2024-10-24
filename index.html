@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mermaid.js Full Gamut Showcase</title>
+  <!-- Include Mermaid.js from CDN -->
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, theme: 'default' });
+  </script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f9f9f9;
+    }
+    h1, h2 {
+      color: #333;
+    }
+    .diagram-section {
+      margin-bottom: 50px;
+    }
+    .container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .diagram, .code {
+      flex: 1;
+      min-width: 300px;
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    pre {
+      background-color: #f4f4f4;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    .mermaid {
+      max-width: 100%;
+      overflow-x: auto;
+    }
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Mermaid.js Full Gamut Showcase</h1>
+  <p>This page demonstrates various types of diagrams that can be created using Mermaid.js. Each section includes a rendered diagram and its corresponding Mermaid script code.</p>
+
+  <!-- Flowchart Section -->
+  <div class="diagram-section">
+    <h2>1. Flowchart</h2>
+    <div class="container">
+      <div class="diagram">
+        <div class="mermaid">
+          %% Flowchart Example
+          graph TD
+            Start[Start] --> Process1[Process Order]
+            Process1 --> Decision{Is Payment Successful?}
+            Decision -- Yes --> Process2[Ship Order]
+            Decision -- No --> End[End Process]
+            Process2 --> End
+        </div>
+      </div>
+      <div class="code">
+        <pre>
+graph TD
+  Start[Start] --> Process1[Process Order]
+  Process1 --> Decision{Is Payment Successful?}
+  Decision -- Yes --> Process2[Ship Order]
+  Decision -- No --> End[End Process]
+  Process2 --> End
+        </pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sequence Diagram Section -->
+  <div class="diagram-section">
+    <h2>2. Sequence Diagram</h2>
+    <div class="container">
+      <div class="diagram">
+        <div class="mermaid">
+          %% Sequence Diagram Example
+          sequenceDiagram
+            participant User
+            participant Browser
+            participant Server
+            User->>Browser: Open Website
+            Browser->>Server: GET /home
+            Server-->>Browser: 200 OK
+            Browser-->>User: Render Page
+        </div>
+      </div>
+      <div class="code">
+        <pre>
+sequenceDiagram
+  participant User
+  participant Browser
+  participant Server
+  User->>Browser: Open Website
+  Browser->>Server: GET /home
+  Server-->>Browser: 200 OK
+  Browser-->>User: Render Page
+        </pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- Class Diagram Section -->
+  <div class="diagram-section">
+    <h2>3. Class Diagram</h2>
+    <div class="container">
+      <div class="diagram">
+        <div class="mermaid">
+          %% Class Diagram Example
+          classDiagram
+            class Animal {
+              +String name
+              +int age
+              +void eat()
+              +void sleep()
+            }
+            class Dog {
+              +void bark()
+            }
+            class Cat {
+              +void meow()
+            }
+            Animal <|-- Dog
+            Animal <|-- Cat
+        </div>
+      </div>
+      <div class="code">
+        <pre>
+classDiagram
+  class Animal {
+    +String name
+    +int age
+    +void eat()
+    +void sleep()
+  }
+  class Dog {
+    +void bark()
+  }
+  class Cat {
+    +void meow()
+  }
+  Animal <|-- Dog
+  Animal <|-- Cat
+        </pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- State Diagram Section -->
+  <div class="diagram-section">
+    <h2>4. State Diagram</h2>
+    <div class="container">
+      <div class="diagram">
+        <div class="mermaid">
+          %% State Diagram Example
+          stateDiagram-v2
+            [*] --> Idle
+            Idle --> Active: Start
+            Active --> Paused: Pause
+            Paused --> Active: Resume
+            Active --> [*]: Stop
+            Paused --> [*]: Stop
+        </div>
+      </div>
+      <div class="code">
+        <pre>
+stateDiagram-v2
+  [*] --> Idle
+  Idle --> Active: Start
+  Active --> Paused: Pause
+  Paused --> Active: Resume
+  Active --> [*]: Stop
+  Paused --> [*]: Stop
+        </pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gantt Chart Section -->
+  <div class="diagram-section">
+    <h2>5. Gantt Chart</h2>
+    <div class="container">
+      <div class="diagram">
+        <div class="mermaid">
+          %% Gantt Chart Example
+          gantt
+            title Project Development Timeline
+            dateFormat  YYYY-MM-DD
+            section Planning
+            Requirement Gathering :a1, 2024-01-01, 2024-01-15
+            Design :after a1, 2024-01-16, 10d
+            section Development
+            Frontend Development :2024-01-26, 20d
+            Backend Development :2024-01-26, 25d
+            Integration :2024-02-15, 10d
+            section Testing
+            Unit Testing :2024-02-25, 10d
+            User Acceptance Testing :2024-03-07, 5d
+            section Deployment
+            Deployment to Production :2024-03-13, 2d
+        </div>
+      </div>
+      <div class="code">
+        <pre>
+gantt
+  title Project Development Timeline
+  dateFormat  YYYY-MM-DD
+  section Planning
+  Requirement Gathering :a1, 2024-01-01, 2024-01-15
+  Design :after a1, 2024-01-16, 10d
+  section Development
+  Frontend Development :2024-01-26, 20d
+  Backend Development :2024-01-26, 25d
+  Integration :2024-02-15, 10d
+  section Testing
+  Unit Testing :2024-02-25, 10d
+  User Acceptance Testing :2024-03-07, 5d
+  section Deployment
+  Deployment to Production :2024-03-13, 2d
+        </pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pie Chart Section -->
+  <div class="diagram-section">
+    <h2>6. Pie Chart</h2>
+    <div class="container">
+      <div class="diagram">
+        <div class="mermaid">
+          %% Pie Chart Example
+          pie
+            title Browser Usage Statistics
+            "Chrome" : 68.39
+            "Safari" : 19.12
+            "Edge" : 3.98
+            "Firefox" : 3.65
+            "Other" : 4.86
+        </div>
+      </div>
+      <div class="code">
+        <pre>
+pie
+  title Browser Usage Statistics
+  "Chrome" : 68.39
+  "Safari" : 19.12
+  "Edge" : 3.98
+  "Firefox" : 3.65
+  "Other" : 4.86
+        </pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- Entity Relationship Diagram (ERD) Section -->
+  <div class="diagram-section">
+    <h2>7. Entity Relationship Diagram (ERD)</h2>
+    <div class="container">
+      <div class="diagram">
+        <div class="mermaid">
+          %% ERD Example
+          erDiagram
+            CUSTOMER ||--o{ ORDER : places
+            ORDER ||--|{ LINE_ITEM : contains
+            CUSTOMER }|..|{ DELIVERY_ADDRESS : uses
+            PRODUCT ||--o{ LINE_ITEM : includes
+            PRODUCT ||--|{ SUPPLY : supplied_by
+            SUPPLY ||--|| WAREHOUSE : stored_in
+        </div>
+      </div>
+      <div class="code">
+        <pre>
+erDiagram
+  CUSTOMER ||--o{ ORDER : places
+  ORDER ||--|{ LINE_ITEM : contains
+  CUSTOMER }|..|{ DELIVERY_ADDRESS : uses
+  PRODUCT ||--o{ LINE_ITEM : includes
+  PRODUCT ||--|{ SUPPLY : supplied_by
+  SUPPLY ||--|| WAREHOUSE : stored_in
+        </pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- Journey Diagram Section -->
+  <div class="diagram-section">
+    <h2>8. Journey Diagram</h2>
+    <div class="container">
+      <div class="diagram">
+        <div class="mermaid">
+          %% Journey Diagram Example
+          journey
+            title My working day
+            section Go to work
+              Make tea: 5: Me
+              Go upstairs: 3: Me
+              Do work: 3: Me, Cat
+            section Go home
+              Go downstairs: 5: Me
+              Sit down: 5: Me
+        </div>
+      </div>
+      <div class="code">
+        <pre>
+journey
+  title My working day
+  section Go to work
+    Make tea: 5: Me
+    Go upstairs: 3: Me
+    Do work: 3: Me, Cat
+  section Go home
+    Go downstairs: 5: Me
+    Sit down: 5: Me
+        </pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- Requirement Diagram Section -->
+  <div class="diagram-section">
+    <h2>9. Requirement Diagram</h2>
+    <div class="container">
+      <div class="diagram">
+        <div class="mermaid">
+          %% Requirement Diagram Example
+          graph TD
+            REQ1[User must login] -->|implements| DEV1[Authentication Module]
+            REQ2[User can reset password] -->|implements| DEV2[Password Reset Feature]
+            REQ1 -->|related to| REQ3[User Profile Management]
+            DEV1 -->|uses| LIB1[JWT Library]
+            DEV2 -->|uses| LIB2[Email Service]
+            DEV1 --> DEV3[Session Management]
+            DEV3 --> LIB3[Database]
+        </div>
+      </div>
+      <div class="code">
+        <pre>
+graph TD
+  REQ1[User must login] -->|implements| DEV1[Authentication Module]
+  REQ2[User can reset password] -->|implements| DEV2[Password Reset Feature]
+  REQ1 -->|related to| REQ3[User Profile Management]
+  DEV1 -->|uses| LIB1[JWT Library]
+  DEV2 -->|uses| LIB2[Email Service]
+  DEV1 --> DEV3[Session Management]
+  DEV3 --> LIB3[Database]
+        </pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- Git Graph Section -->
+  <div class="diagram-section">
+    <h2>10. Git Graph</h2>
+    <div class="container">
+      <div class="diagram">
+        <div class="mermaid">
+          %% Git Graph Example
+          gitGraph
+            commit
+            branch develop
+            commit
+            commit
+            checkout main
+            commit
+            merge develop
+            branch feature/login
+            commit
+            commit
+            checkout develop
+            merge feature/login
+            commit
+        </div>
+      </div>
+      <div class="code">
+        <pre>
+gitGraph
+  commit
+  branch develop
+  commit
+  commit
+  checkout main
+  commit
+  merge develop
+  branch feature/login
+  commit
+  commit
+  checkout develop
+  merge feature/login
+  commit
+        </pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- Additional Advanced Features Section -->
+  <div class="diagram-section">
+    <h2>11. Advanced Features</h2>
+    <div class="container">
+      <div class="diagram">
+        <div class="mermaid">
+          %% Advanced Flowchart with Styling and Subgraphs
+          graph LR
+            subgraph Authentication
+              A1[Login] --> A2{Credentials Valid?}
+              A2 -- Yes --> A3[Access Granted]
+              A2 -- No --> A4[Access Denied]
+            end
+            subgraph Dashboard
+              D1[Load Data] --> D2[Render UI]
+            end
+            subgraph Settings
+              S1[Change Password] --> S2{Old Password Correct?}
+              S2 -- Yes --> S3[Update Password]
+              S2 -- No --> S4[Error Message]
+            end
+            A3 --> D1
+            D2 --> S1
+            S3 --> D2
+            A4 --> |"Retry"| A1
+
+            %% Styling
+            classDef success fill:#cfc,stroke:#333,stroke-width:2px;
+            classDef failure fill:#fcc,stroke:#333,stroke-width:2px;
+            class A3,D1,D2,S3 success
+            class A4,S4 failure
+        </div>
+      </div>
+      <div class="code">
+        <pre>
+graph LR
+  subgraph Authentication
+    A1[Login] --> A2{Credentials Valid?}
+    A2 -- Yes --> A3[Access Granted]
+    A2 -- No --> A4[Access Denied]
+  end
+  subgraph Dashboard
+    D1[Load Data] --> D2[Render UI]
+  end
+  subgraph Settings
+    S1[Change Password] --> S2{Old Password Correct?}
+    S2 -- Yes --> S3[Update Password]
+    S2 -- No --> S4[Error Message]
+  end
+  A3 --> D1
+  D2 --> S1
+  S3 --> D2
+  A4 --> |"Retry"| A1
+
+  %% Styling
+  classDef success fill:#cfc,stroke:#333,stroke-width:2px;
+  classDef failure fill:#fcc,stroke:#333,stroke-width:2px;
+  class A3,D1,D2,S3 success
+  class A4,S4 failure
+        </pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- Conclusion Section -->
+  <div class="diagram-section">
+    <h2>Conclusion</h2>
+    <p>Mermaid.js is a powerful tool for creating a wide variety of diagrams using simple text-based scripts. This comprehensive showcase illustrates how you can leverage Mermaid.js to visualize complex processes, interactions, structures, and data in an organized and visually appealing manner.</p>
+    <p>Feel free to modify the scripts above or refer to the <a href="https://mermaid-js.github.io/mermaid/#/" target="_blank">official Mermaid documentation</a> to explore more features and customization options.</p>
+  </div>
+</body>
+</html>
